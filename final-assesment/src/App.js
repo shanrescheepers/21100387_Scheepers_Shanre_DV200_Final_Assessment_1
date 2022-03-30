@@ -36,7 +36,8 @@ function App() {
     <div className="App">
 
       <Routes>
-        <Route path="/overviewpage" element={<OverviewPage />} />
+        <Route path="/" element={<OverviewPage />} />
+
       </Routes>
     </div>
   );

@@ -10,22 +10,23 @@ export function ThrustData() {
 
     useEffect(() => {
         getThrust().then(rocket => {
-            const seaLevelThrust = rocket.filter(events => events.first_stage[0])
-            const vacuumThrust = rocket.filter(events => events.first_stage[2])
-            getThrust(first_stage[0]).then(event => {
+
+            const seaLevelThrust = rocket.filter(events => events.thrust_sea_level)
+            const vacuumThrust = rocket.filter(events => events.thrust_vacuum)
+            getThrust().then(event => {
 
 
                 setChartData({
-                    labels: ["Sea Level"],
+                    labels: ["Sea Level Thrust"],
                     datasets: [
                         {
-                            label: event.first_stage[0],
-                            data: [event.first_stage[0].seaLevelThrust],
+                            label: event,
+                            data: [event.data],
                             backgroundColor: "#2b2b2b",
                         },
                         {
-                            label: first_stage[1].vacuumThrust,
-                            data: [event.first_stage[1].vacuumThrust],
+                            label: [event.data.vacuumThrust],
+                            data: [event.data.vacuumThrust],
                             backgroundColor: "#222222",
                         },
                     ]
@@ -39,7 +40,7 @@ export function ThrustData() {
                         },
                         title: {
                             display: true,
-                            text: `${event.Name}`,
+                            text: `${event.getThrust}`,
                         },
                     },
                 });
@@ -51,3 +52,4 @@ export function ThrustData() {
         <Bar options={chartOptions} data={chartData} />
     );
 }
+export default ThrustData;

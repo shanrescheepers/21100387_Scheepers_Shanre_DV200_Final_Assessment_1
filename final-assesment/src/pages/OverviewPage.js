@@ -1,7 +1,8 @@
 import { getLaunches } from "../services/ApiService";
-import SuccesFailureLaunches, { ChartOne } from '../Charts/ChartOne';
-import { ChartTwo } from '../Charts/ChartTwo';
-import { Doughnut } from "react-chartjs-2";
+import SuccesFailureLaunches from '../Charts/ChartOne';
+import ThrustData from '../Charts/ChartTwo';
+
+
 
 export function OverviewPage() {
     return (
@@ -9,6 +10,14 @@ export function OverviewPage() {
             <h1>Space X: Overview</h1>
             <div>
                 < SuccesFailureLaunches />
+
+                <ThrustData />
+
+                <TotalLaunches />
+                <div>
+                    <div className="missions"></div>
+                </div>
+
             </div>
 
 
