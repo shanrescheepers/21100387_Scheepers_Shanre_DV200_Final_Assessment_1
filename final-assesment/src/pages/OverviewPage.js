@@ -1,4 +1,5 @@
-import { getLaunches } from "../services/ApiService"
+import { getLaunches } from "../services/ApiService";
+import { ChartOne } from '../Charts/ChartOne';
 
 export function OverviewPage() {
     return (
