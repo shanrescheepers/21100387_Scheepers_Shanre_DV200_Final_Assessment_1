@@ -1,29 +1,32 @@
 import { Bar } from "react-chartjs-2";
 import React, { useState, useEffect } from "react";
-import { getThrust } from "../services/ApiService";
+import { getLaunches, getThrust } from "../services/ApiService";
 
-export function getThrustData() {
+export function ThrustData() {
     const [chartOptions, setChartOptions] = useState({});
-    const [chartData, setChartData] = useState({});
+    const [chartData, setChartData] = useState({
+        datasets: [],
+    });
 
     useEffect(() => {
-        Thrust.then(thrusts => {
-            const seaLevelThrust = thrust.first_stage.thrust_sea_level(thrust => thrust.data)
-            getThrust(thrust.data.seaLevelThrust).then(thrusts => {
+        getThrust().then(rocket => {
+            const seaLevelThrust = rocket.filter(events => events.first_stage[0])
+            const vacuumThrust = rocket.filter(events => events.first_stage[2])
+            getThrust(first_stage[0]).then(event => {
 
 
                 setChartData({
-                    labels: ["thrust at sea level"],
+                    labels: ["Sea Level"],
                     datasets: [
                         {
-                            label: '',
-                            data: [],
+                            label: event.first_stage[0],
+                            data: [event.first_stage[0].seaLevelThrust],
                             backgroundColor: "#2b2b2b",
                         },
                         {
-                            label: '',
-                            data: [],
-                            backgroundColor: "#22222",
+                            label: first_stage[1].vacuumThrust,
+                            data: [event.first_stage[1].vacuumThrust],
+                            backgroundColor: "#222222",
                         },
                     ]
                 });
@@ -36,7 +39,7 @@ export function getThrustData() {
                         },
                         title: {
                             display: true,
-                            text: `${thrust}`,
+                            text: `${event.Name}`,
                         },
                     },
                 });
@@ -48,4 +51,3 @@ export function getThrustData() {
         <Bar options={chartOptions} data={chartData} />
     );
 }
-export default getThrustData;
