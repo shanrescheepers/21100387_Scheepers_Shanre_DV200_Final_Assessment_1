@@ -15,6 +15,7 @@ import {
   RadialLinearScale,
 } from "chart.js";
 import { React } from "react";
+
 import { Routes, Route } from 'react-router-dom';
 
 ChartJS.register(
