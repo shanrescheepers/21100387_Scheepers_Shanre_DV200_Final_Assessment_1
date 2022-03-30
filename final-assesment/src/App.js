@@ -1,23 +1,42 @@
-import logo from './logo.svg';
+import { OverviewPage } from './pages/OverviewPage';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+  PointElement,
+  LineElement,
+  RadialLinearScale,
+} from "chart.js";
+import { React } from "react";
+import { Routes, Route } from 'react-router-dom';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  PointElement,
+  LineElement,
+  RadialLinearScale,
+  Title,
+  Tooltip,
+  Legend
+);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Routes>
+        <Route path="/overviewpage" element={<OverviewPage />} />
+      </Routes>
     </div>
   );
 }
